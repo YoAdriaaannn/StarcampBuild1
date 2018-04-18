@@ -8,6 +8,6 @@
     <LinearLayout
         android:layout_width="6dp"
         android:layout_height="6dp"
-        android:background="@drawable/starcamp"></LinearLayout>
-
+        android:background="@drawable/starcamp">
+    </LinearLayout>
 </LinearLayout>

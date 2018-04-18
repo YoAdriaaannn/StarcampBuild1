@@ -2,11 +2,12 @@ package com.fr0stsoft.starcamp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,14 +15,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.fr0stsoft.starcamp.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener
+{
 
     private NavigationView navigationView;
     private DrawerLayout drawer;
@@ -70,11 +70,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Navigation view header
         navHeader = navigationView.getHeaderView(0);
+       /**
+
         txtName = (TextView) navHeader.findViewById(R.id.name);
         txtWebsite = (TextView) navHeader.findViewById(R.id.website);
         imgNavHeaderBg = (ImageView) navHeader.findViewById(R.id.img_header_bg);
         imgProfile = (ImageView) navHeader.findViewById(R.id.img_profile);
-
+        */
         // load toolbar titles from string resources
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
 
@@ -106,10 +108,10 @@ public class MainActivity extends AppCompatActivity {
      */
     private void loadNavHeader() {
         // name, website
-        txtName.setText("Ravi Tamada");
-        txtWebsite.setText("www.androidhive.info");
+       // txtName.setText("");
+       // txtWebsite.setText("");
 
-        // loading header background image
+       /** // loading header background image
         Glide.with(this).load(urlNavHeaderBg)
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -125,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
         // showing dot next to notifications label
         navigationView.getMenu().getItem(3).setActionView(R.layout.menu_dot);
+        */
     }
 
     /***
@@ -144,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
             drawer.closeDrawers();
 
             // show or hide the fab button
-            toggleFab();
+           // toggleFab();
             return;
         }
 
@@ -171,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // show or hide the fab button
-        toggleFab();
+        //toggleFab();
 
         //Closing drawer on item click
         drawer.closeDrawers();
@@ -195,14 +198,34 @@ public class MainActivity extends AppCompatActivity {
                 MoviesFragment moviesFragment = new MoviesFragment();
                 return moviesFragment;
             case 3:
-                // notifications fragment
-                NotificationsFragment notificationsFragment = new NotificationsFragment();
-                return notificationsFragment;
+                // lineup fragment
+                LineupFragment lineupFragment = new LineupFragment();
+                return lineupFragment;
 
             case 4:
-                // settings fragment
-                SettingsFragment settingsFragment = new SettingsFragment();
-                return settingsFragment;
+                // activities fragment
+                ActivitiesFragment activitiesFragment = new ActivitiesFragment();
+                return activitiesFragment;
+
+
+
+            case 5:
+                // checklist fragment
+                ChecklistFragment checklistFragment = new ChecklistFragment();
+                return checklistFragment;
+
+            case 6:
+                // directions fragment
+                DirectionFragment directionFragment = new DirectionFragment();
+                return directionFragment;
+
+            case 7:
+                // navigate fragment
+                NavigateFragment navigateFragment = new NavigateFragment();
+                return navigateFragment;
+
+
+
             default:
                 return new HomeFragment();
         }
@@ -352,6 +375,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -388,4 +412,5 @@ public class MainActivity extends AppCompatActivity {
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    */
 }
